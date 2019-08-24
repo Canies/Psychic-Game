@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>The Psychic Game </title>
+</head>
+
+<body>
+    <body style="font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 140%">
+        
+
+    <div>
+
+        <img src="./assets/images/monster-children-psychic-1068x571.jpg" alt="PsychicSign" height="300" width="360">
+
+        <p id="title"> The Psychic Game </p>
+        <p id="directions-text">Guess what letter I'm thinking of...</p>
+        <p id="userchoice-text"></p>
+        <p id="computerchoice"></p>
+        <p>Wins: <span id="wins-text"></span></p>
+        <p>Losses: <span id="losses-text"></span></p>
+        <p>Guesses Left:<span id="guesses-left-text"></span> </p>
+
+
+
+    </div>
+    <script type="text/javascript">
+
+        var directionsText = document.getElementById("directions-text");
+        var userChoiceText = document.getElementById("userchoice-text");
+        var computerChoiceText = document.getElementById("computerchoice-text");
+        var winsText = document.getElementById("wins-text");
+        var lossesText = document.getElementById("losses-text");
+        var element = document.getElementById("guesses-left-text");
+        
+
+        var computerChoices = ["b", "c", "f"];
+
+        var wins = 0;
+        var losses = 0;
+        var guessesLeft = 15;
+
+
+        document.onkeyup = function () {
+            var userGuess = event.key;
+            guessesLeft--;
+            element.innerHTML = guessesLeft;
+            console.log(guessesLeft);
+            console.log(userGuess);
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            console.log(computerGuess);
+            if (computerChoices.includes(userGuess)) {
+                wins++;
+                winsText.innerHTML = wins;
+            } else {
+                losses++;
+                lossesText.innerHTML = losses;
+            }
+            if (guessesLeft === 0) {
+                alert("GAME OVER!");
+                wins = 0;
+                losses = 0;
+                guessesLeft = 15;
+                winsText.innerText ="";
+                lossesText.innerHTML ="";
+                guessesLeft.innerHTML =0;
+                
+                
+                        
+                
+                
+                        
+                
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
